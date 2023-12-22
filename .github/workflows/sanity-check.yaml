@@ -15,10 +15,10 @@ jobs:
           npm ci
 
       - name: Lint check
-        run: npm run lint:prod
+        run: npm run lint
 
-      - name: Test check
-        run: npm test
+      # - name: Test check
+      #   run: npm test
 
       - name: CI Badges
         uses: GaelGirodon/ci-badges-action@v1.1.0

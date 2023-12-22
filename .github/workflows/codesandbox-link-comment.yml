@@ -15,5 +15,5 @@ jobs:
           message: |
             You can check this code at CodeSandbox with the link
             https://githubbox.com/${{ github.repository }}/tree/${{ github.head_ref }}
-            Also, you can check gh-pages build at CodeSandbox with the link
-            https://githubbox.com/${{ github.repository }}/tree/gh-pages
+            Also, you can check gh-pages build at raw.githack.com with the link
+            https://raw.githack.com/${{ github.repository }}/gh-pages/index.html
