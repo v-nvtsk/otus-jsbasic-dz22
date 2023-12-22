@@ -1,0 +1,23 @@
+.about .page__title {
+  margin-bottom: 40px;
+}
+
+.about__image {
+  float: left;
+  margin: 0 20px 20px 0;
+}
+
+.about__text {
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media screen and (width <= 768px) {
+  .about__image{
+    display: block;
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+  
+}
