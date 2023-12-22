@@ -16,7 +16,7 @@ module.exports = (env) => {
       [key]: {
         import: `src/views/pages/${key}.hbs`,
         data: { title: value },
-        filename: `${key}/index.html`,
+        filename: `${key}.html`,
       },
     };
   }, {});
