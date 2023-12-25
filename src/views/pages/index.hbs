@@ -30,8 +30,19 @@
       </aside>
       <section class="main__content">
         <h1 class="page__title">Главная страница</h1>
-        <div class="slider">
-          Reserved for carousel
+        <div class="slider" id="slider">
+
+
+          <ul class="slider__wrapper">
+            <li class="slider__slide slide slide--active">
+              <img class="slide__image" src="../../img/slides/one.jpg" alt="First slide">
+            </li>
+          </ul>
+          <span class="slider__btn slider__btn--prev" href="#sliderControls">&lt;</span>
+          <span class="slider__btn slider__btn--next" href="#sliderControls">&gt;</span>
+
+
+
         </div>
         <article class="main__article main__article_short article">
           <h2 class="article__title">Заголовок статьи</h2>
@@ -96,7 +107,7 @@
     </div>
   </main>
   {{> footer }}
-  <script src="../../index.js"></script>
+  <script src="../../js/main.js"></script>
 </body>
 
 </html>
