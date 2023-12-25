@@ -1,5 +1,7 @@
 import Slider from "./slider";
 
+import { fireEvent } from "@testing-library/dom";
+
 describe("Slider test suite", () => {
   let slider;
   let container;
@@ -21,6 +23,12 @@ describe("Slider test suite", () => {
   }
 
   beforeEach(() => {
+    jest.useFakeTimers();
+    // eslint-disable-next-line no-undef
+    jest.spyOn(global, "setTimeout");
+    // eslint-disable-next-line no-undef
+    jest.spyOn(global, "clearTimeout");
+
     container = document.createElement("div");
     container.classList.add("slider");
     wrapper = createElement(container, "ul", "slider__wrapper");
@@ -32,6 +40,10 @@ describe("Slider test suite", () => {
     slider.addSlide("test.jpg");
     slider.addSlide("test.jpg");
     slider.addSlide("test.jpg");
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it("should be defined", () => {
@@ -95,5 +107,50 @@ describe("Slider test suite", () => {
     // slide 5
     sliderBtnPrev.click();
     expect(wrapper.style.transform).toBe("translateX(-400%)");
+  });
+
+  it("should set timer", () => {
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+  });
+
+  it("should change slide by timer", () => {
+    expect(slider.activeSlideNum).toBe(0);
+    jest.advanceTimersToNextTimer(1);
+    expect(slider.activeSlideNum).toBe(1);
+    jest.advanceTimersToNextTimer(2);
+    expect(slider.activeSlideNum).toBe(0);
+  });
+
+  it("should pause timer on mouseover", async () => {
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+
+    expect(clearTimeout).toHaveBeenCalledTimes(1);
+    expect(clearTimeout).toHaveBeenLastCalledWith(null);
+
+    // hover mouse over container
+    fireEvent.mouseOver(wrapper, {
+      duration: 4000,
+      repeat: 1,
+    });
+    expect(clearTimeout).toHaveBeenCalledTimes(2);
+    expect(container.classList.contains("animation-paused")).toBe(true);
+  }, 10000);
+
+  it("should continue timer on mouseout", async () => {
+    // hover mouse over container
+    fireEvent.mouseOver(wrapper, {
+      duration: 4000,
+      repeat: 1,
+    });
+    // remove mouse
+    fireEvent.mouseOut(wrapper, {
+      duration: 1500,
+      repeat: 1,
+    });
+    expect(setTimeout).toHaveBeenCalledTimes(2);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+    expect(container.classList.contains("animation-paused")).toBe(false);
   });
 });
