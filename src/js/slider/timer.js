@@ -1,4 +1,3 @@
-
 const TIMEOUT = 5000;
 
 export default function Timer(timeout = TIMEOUT) {
@@ -25,6 +24,7 @@ export default function Timer(timeout = TIMEOUT) {
       this.timerId = null;
     },
     continue() {
+      if (this.remainTime === null) return;
       this.start(this.remainTime);
     },
     reset() {
