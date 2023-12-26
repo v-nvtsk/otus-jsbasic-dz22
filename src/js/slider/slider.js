@@ -1,49 +1,12 @@
 import "./slider.scss";
+import Timer from './timer'
 
 export default function Slider(container, interval, loop = true) {
   const wrapper = container.querySelector(".slider__wrapper");
   const sliderBtnPrev = container.querySelector(".slider__btn--prev");
   const sliderBtnNext = container.querySelector(".slider__btn--next");
 
-function Timer(timeout) {
-  return {
-    timerId: null,
-    startTime: null,
-    callback: null,
-    timeout,
-    remainTime: null,
-    init(cb, time) {
-      this.callback = cb;
-      this.timeout = time || this.timeout;
-      this.start(this.timeout);
-    },
-    start(time) {
-      clearTimeout(this.timerId);
-      this.startTime = Date.now();
-      this.timerId = setTimeout(this.callback, time);
-    },
-    pause() {
-      const pauseTime = Date.now();
-      this.remainTime = this.remainTime || this.timeout - (pauseTime - this.startTime);
-      clearTimeout(this.timerId);
-      this.timerId = null;
-    },
-    continue() {
-      this.start(this.remainTime);
-    },
-    reset() {
-      this.remainTime = null;
-      this.start(this.timeout);
-    },
-  };
-}
-
-export default function Slider(slider) {
-  const wrapper = slider.querySelector(".slider__wrapper");
-  const sliderBtnPrev = slider.querySelector(".slider__btn--prev");
-  const sliderBtnNext = slider.querySelector(".slider__btn--next");
-
-  const timer = new Timer(TIMEOUT);
+  const timer = new Timer(interval);
 
   const sliderCallbacks = {
     onBtnPrevClick() {
