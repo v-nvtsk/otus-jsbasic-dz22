@@ -49,8 +49,8 @@
   "lint-staged": {
     "*.scss": "npm run stylelint",
     "*.js": [
-      "eslint ./src --fix --color",
-      "prettier --write"
+      "prettier --write",
+      "eslint ./src --fix --color"
     ]
   }
 }
