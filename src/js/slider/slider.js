@@ -5,8 +5,9 @@ import Timer from "./timer";
  * Creates a Slider object.
  *
  * @param {HTMLElement} container - The container element that holds the slider.
- * @param {number} interval - The interval time between slides in milliseconds.
- * @param {boolean} [loop=true] - Whether the slider should loop back to the first slide after reaching the end.
+ * @param {Object} options - The options for the slider.
+ * @param {number} options.interval - The interval between slide transitions in milliseconds.
+ * @param {boolean} options.loop - Indicates whether the slider should loop back to the first slide after reaching the last slide.
  * @return {Slider} The Slider object.
  */
 export default function Slider(container, options) {
