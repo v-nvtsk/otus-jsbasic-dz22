@@ -1,6 +1,9 @@
 import "./slider.scss";
 
-const TIMEOUT = 5000;
+export default function Slider(container, interval, loop = true) {
+  const wrapper = container.querySelector(".slider__wrapper");
+  const sliderBtnPrev = container.querySelector(".slider__btn--prev");
+  const sliderBtnNext = container.querySelector(".slider__btn--next");
 
 function Timer(timeout) {
   return {
@@ -59,7 +62,7 @@ export default function Slider(slider) {
   sliderBtnNext.addEventListener("click", sliderCallbacks.onBtnNextClick.bind(this));
 
   this.activeSlideNum = 0;
-  this.slides = slider.querySelectorAll(".slider__slide");
+  this.slides = container.querySelectorAll(".slider__slide");
   this.slidesCount = this.slides.length;
 
   this.addSlide = (slideImgPath) => {
@@ -70,7 +73,7 @@ export default function Slider(slider) {
     img.src = slideImgPath;
     li.append(img);
     wrapper.append(li);
-    this.slides = slider.querySelectorAll(".slider__slide");
+    this.slides = container.querySelectorAll(".slider__slide");
     this.slidesCount += 1;
   };
 
@@ -81,12 +84,12 @@ export default function Slider(slider) {
   };
 
   timer.init(sliderCallbacks.onBtnNextClick.bind(this));
-  slider.addEventListener("mouseover", () => {
-    slider.classList.add("animation-paused");
+  container.addEventListener("mouseover", () => {
+    container.classList.add("animation-paused");
     timer.pause();
   });
-  slider.addEventListener("mouseout", () => {
-    slider.classList.remove("animation-paused");
+  container.addEventListener("mouseout", () => {
+    container.classList.remove("animation-paused");
     timer.continue();
   });
 
