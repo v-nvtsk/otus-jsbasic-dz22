@@ -1,5 +1,5 @@
 import "./slider.scss";
-import Timer from './timer'
+import Timer from "./timer";
 
 export default function Slider(container, interval, loop = true) {
   const wrapper = container.querySelector(".slider__wrapper");
@@ -11,12 +11,21 @@ export default function Slider(container, interval, loop = true) {
   const sliderCallbacks = {
     onBtnPrevClick() {
       this.slides[this.activeSlideNum].classList.remove("slide--active");
-      this.activeSlideNum = this.activeSlideNum === 0 ? this.slidesCount - 1 : this.activeSlideNum - 1;
+      if (loop) {
+        this.activeSlideNum = this.activeSlideNum === 0 ? this.slidesCount - 1 : this.activeSlideNum - 1;
+      } else {
+        this.activeSlideNum = this.activeSlideNum === 0 ? this.activeSlideNum : this.activeSlideNum - 1;
+      }
       this.setActiveSlide(this.activeSlideNum);
     },
     onBtnNextClick() {
       this.slides[this.activeSlideNum].classList.remove("slide--active");
-      this.activeSlideNum = this.activeSlideNum === this.slidesCount - 1 ? 0 : this.activeSlideNum + 1;
+      if (loop) {
+        this.activeSlideNum = this.activeSlideNum === this.slidesCount - 1 ? 0 : this.activeSlideNum + 1;
+      } else {
+        this.activeSlideNum =
+          this.activeSlideNum === this.slidesCount - 1 ? this.activeSlideNum : this.activeSlideNum + 1;
+      }
       this.setActiveSlide(this.activeSlideNum);
     },
   };
