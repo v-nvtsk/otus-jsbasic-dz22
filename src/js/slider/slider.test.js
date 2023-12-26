@@ -153,6 +153,29 @@ describe("Slider test suite", () => {
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
     expect(container.classList.contains("animation-paused")).toBe(false);
   });
+
+  it("should reset remain time after pause and slide change", () => {
+    // setTimeout ran first time on init
+    // setTimeout runs second time on click
+    sliderBtnNext.click();
+    // slide 2
+    // hover mouse over container
+    fireEvent.mouseOver(wrapper, {
+      duration: 4000,
+      repeat: 1,
+    });
+    // setTimeout runs third time on click
+    sliderBtnPrev.click();
+    // slide 1
+    // remove mouse
+    fireEvent.mouseOut(wrapper, {
+      duration: 500,
+      repeat: 1,
+    });
+    // mouseout is ignored if remainTime === null (timer was resetted)
+    expect(setTimeout).toHaveBeenCalledTimes(3);
+    expect(slider.activeSlideNum).toBe(0);
+  });
 });
 
 describe("Slider no-loop test suite", () => {
