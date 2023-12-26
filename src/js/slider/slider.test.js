@@ -211,7 +211,7 @@ describe("Slider no-loop test suite", () => {
     sliderBtnPrev = createElement(container, "a", "slider__btn", "slider__btn--prev");
     sliderBtnNext = createElement(container, "a", "slider__btn", "slider__btn--next");
 
-    slider = new Slider(container, 5000, false);
+    slider = new Slider(container, { interval: 5000, loop: false });
 
     slider.addSlide("test.jpg");
     slider.addSlide("test.jpg");

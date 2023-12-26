@@ -2,7 +2,7 @@ import Slider from "./slider/slider.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector("#slider");
-  const slider = new Slider(container, 2000, false);
+  const slider = new Slider(container, { interval: 2000, loop: true });
 
   slider.addSlide("https://img1.fonwall.ru/o/xg/utro-plyazh-kamni.jpg");
   slider.addSlide(

@@ -9,7 +9,9 @@ import Timer from "./timer";
  * @param {boolean} [loop=true] - Whether the slider should loop back to the first slide after reaching the end.
  * @return {Slider} The Slider object.
  */
-export default function Slider(container, interval, loop = true) {
+export default function Slider(container, options) {
+  const interval = options?.interval;
+  const loop = options?.loop ?? true;
   const wrapper = container.querySelector(".slider__wrapper");
   const sliderBtnPrev = container.querySelector(".slider__btn--prev");
   const sliderBtnNext = container.querySelector(".slider__btn--next");
