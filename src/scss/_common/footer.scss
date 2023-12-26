@@ -1,0 +1,14 @@
+.page__footer {
+  background: rgb(51 101 142);
+
+  .nav__link:visited {
+    color: var(--text-color);
+  }
+
+  .footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}

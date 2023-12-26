@@ -1,0 +1,45 @@
+/* stylelint-disable-line */
+:root {
+  --footer-height: 60px;
+  --header-height: 60px;
+  --color-text: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  background-color: steelblue;
+}
+
+a:link {
+  color: var(--text-color);
+}
+
+.page__header {
+  height: var(--header-height);
+}
+
+.page__footer {
+  height: var(--footer-height);
+}
+
+.page__main-section {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+.page__title{
+  padding-top: 20px;
+  font-size: 36px;
+}
