@@ -1,6 +1,14 @@
 import "./slider.scss";
 import Timer from "./timer";
 
+/**
+ * Creates a Slider object.
+ *
+ * @param {HTMLElement} container - The container element that holds the slider.
+ * @param {number} interval - The interval time between slides in milliseconds.
+ * @param {boolean} [loop=true] - Whether the slider should loop back to the first slide after reaching the end.
+ * @return {Slider} The Slider object.
+ */
 export default function Slider(container, interval, loop = true) {
   const wrapper = container.querySelector(".slider__wrapper");
   const sliderBtnPrev = container.querySelector(".slider__btn--prev");
