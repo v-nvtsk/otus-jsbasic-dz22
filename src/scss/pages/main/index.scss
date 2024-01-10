@@ -43,14 +43,13 @@
   place-content: center;
   align-items: center;
   width: 100%;
-  height: 300px;
+  min-height: 300px;
   margin-top: 20px;
   background-color: rgb(100 104 113);
 }
 
 @media screen and (width <= 768px) {
-  .side-bar{
+  .side-bar {
     display: none;
   }
-  
 }
